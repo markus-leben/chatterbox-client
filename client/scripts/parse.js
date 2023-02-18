@@ -7,7 +7,23 @@ var Parse = {
   server: `https://app-hrsei-api.herokuapp.com/api/chatterbox/messages/${window.CAMPUS}`,
 
   create: function(message, successCB, errorCB = null) {
-    // TODO: send a request to the Parse API to save the message
+    // ajax
+    // url is the server
+    // type post
+    // data... the message?
+    // contenttype should be the same? maybe not
+    // success & error cb, should be just the same as in readall
+    $.ajax({
+      url: Parse.server,
+      type: 'POST',
+      data: JSON.stringify(message),
+      contentType: 'application/json',
+      success: successCB,
+      error: errorCB || function(error) {
+        console.error('chatterbox: Failed to send a message', error);
+      }
+    });
+
   },
 
   readAll: function(successCB, errorCB = null) {

@@ -16,8 +16,25 @@ var FormView = {
 
     // TODO: Currently, this is all handleSubmit does.
     // Make this function actually send a message to the Parse API.
-  
-    console.log('click!');
+
+    var messageBox = $('#message')[0];
+    var message = {
+      username: App.username,
+      text: messageBox.value,
+      roomname: 'lobby' // TODO: fix this to dynamically change room
+    };
+    if (messageBox.value.length > 0) {
+      Parse.create(message);
+      messageBox.value = '';
+    }
+
+
+
+    // if the message text is empty
+      // do that preventdefault thing
+    // otherwise
+      // send the message, and probably update the DOM eventually, but let's just get the message going for now.
+    console.log(typeof $('#message')[0].value);
   },
 
   setStatus: function(active) {
