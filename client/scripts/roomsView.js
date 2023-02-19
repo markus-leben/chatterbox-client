@@ -11,16 +11,27 @@ var RoomsView = {
     // when this view loads.
   },
 
-  render: function() {
+  render: function(roomNames) {
     // TODO: Render out the list of rooms.
+    // empty out the select form
+    RoomsView.$select.empty();
+    // debugger;
+    // for everything passed in from rooms.js
+    for (let thisRoom of Object.keys(roomNames)) {
+      // renderroom on those to add them to the select form
+      $(RoomsView.renderRoomDropdown(thisRoom)).appendTo(RoomsView.$select);
+      // RoomsView.renderRoomDropdown(room).appendto(RoomsView.$select)
+    }
   },
 
-  renderRoom: function(roomname) {
+  renderRoomDropdown: function(roomname) {
     // TODO: Render out a single room.
+    return _.template(`<option value="<%-roomname%>"><%-roomname%></option>`)({'roomname': roomname});
   },
 
   handleChange: function(event) {
     // TODO: Handle a user selecting a different room.
+
   },
 
   handleClick: function(event) {

@@ -41,7 +41,10 @@ var Messages = {
   // go through rawdata
     for (let rawMessage of rawData) {
       // use messages push on each of them
-      Messages._data.push(Messages.trimMessage(rawMessage));
+      var trimmed = Messages.trimMessage(rawMessage);
+
+      Messages._data.push(trimmed);
+      Rooms._data[rawMessage.roomname].push(trimmed);
     }
   },
 
@@ -49,7 +52,8 @@ var Messages = {
   trimMessage: function (message) {
     var trimmedMessage = {
       text: message.text,
-      username: message.username
+      username: message.username,
+      roomname: message.roomname
     };
     return trimmedMessage;
   }

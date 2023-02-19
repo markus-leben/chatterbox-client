@@ -30,7 +30,7 @@ var MessagesView = {
     // TODO: Render a single message. create a div containing the message and whatever else will be rendered
     // append message divs to the <div id="chats"></div>
     // MessageView.render({username: 'Nilly', messageText:'This is a message.'})
-    $(MessageView.render({username: message.user, text: message.text})).appendTo(MessagesView.$chats);
+    $(MessageView.render({username: message.username, text: message.text})).appendTo(MessagesView.$chats);
   },
 
   handleClick: function(event) {
